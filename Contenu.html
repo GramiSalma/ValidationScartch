@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificat Scratch - Validation</title>
+  <style>
+    /* Styles de base */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-message {
+      color: #ff4d4d;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 20px;
+    }
+
+    .certificate-content {
+      display: none;
+    }
+
+    h2 {
+      color: #007bff;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #333;
+      font-weight: normal;
+    }
+
+    .signature span {
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #f1f1f1;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Styles pour les listes */
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    /* Styles pour l'image */
+    .scratch-image {
+      display: block;
+      margin: 20px auto;
+      max-width: 150px;
+      height: auto;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        margin: 15px;
+        padding: 15px;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      .scratch-image {
+        max-width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Certificat de Réussite Scratch</h1>
+  </header>
+
+  <div class="container">
+    <!-- Message d'erreur en cas d'accès non autorisé -->
+    <div id="error-message" class="error-message"></div>
+
+    <!-- Contenu du certificat (affiché uniquement si l'étudiant est autorisé) -->
+    <div id="certificate-content" class="certificate-content">
+      <h2>Félicitations, <span id="student-name"></span> !</h2>
+      <p>
+       Vous avez passé le cours de Scratch avec succès !
+      </p>
+     
+      <!-- Image de Scratch -->
+      <img src="download.jpg" alt="Logo de Scratch" class="scratch-image">
+
+      
+      <br>
+      <p>
+        <strong>Contenu du cours :</strong> <br>
+        <ul>
+          <li><strong>Introduction à Scratch</strong>: Découverte des composants de l'interface et réalisation d'une activité simple pour faire bouger un personnage à l'écran.</li>
+          <li><strong>Personnalisation des éléments</strong>: Découverte de l'interface de dessin et création de personnages et arrière-plans personnalisés.</li>
+          <li><strong>Les blocs de base – Événements et mouvement</strong>: Introduction aux blocs d'événements pour déclencher des actions et exploration des blocs de mouvement.</li>
+          <li><strong>Les blocs d’apparence</strong>: Apprentissage de la gestion de l'apparence des personnages et arrière-plans.</li>
+          <li><strong>Les blocs de contrôle</strong>: Utilisation des boucles et conditions pour contrôler les actions dans le jeu.</li>
+          <li><strong>Les blocs de capteurs</strong>: Introduction aux capteurs et utilisation dans des projets pratiques.</li>
+          <li><strong>Les opérateurs</strong>: Utilisation des opérateurs pour manipuler des valeurs et construire des expressions complexes.</li>
+          <li><strong>Sons et variables</strong>: Ajout de sons pour améliorer les projets et introduction aux variables pour stocker des informations dans les jeux.</li>
+          <li><strong>Consolidation et projets libres</strong>: Développement de projets personnalisés en utilisant les différents blocs étudiés et explorations des extensions.</li>
+          <li><strong>Extensions Scratch</strong>: Introduction aux extensions disponibles pour étendre les capacités de Scratch, telles que les extensions pour la vidéo, la traduction, etc.</li>
+        </ul>
+      </p>
+
+
+      <p class="signature">
+        Sous la supervision de 
+        <span>Grami Salma</span><br>
+        Ingénieur en Informatique<br>
+        Email: <a href="mailto:gramisalma0@gmail.com">gramisalma0@gmail.com</a>
+      </p>
+
+      <p>
+        <strong>Année académique :</strong> 2024-2025
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>CopyRight: <a href="https://github.com/gramisalma" target="_blank">Grami Salma</a></p>
+    
+  </footer>
+
+  <script>
+    // Liste des étudiants autorisés avec prénom et nom
+    const authorizedStudents = [
+      { id: 1, firstName: "Nassim", lastName: "El Malki" },
+      { id: 2, firstName: "Yue Fei", lastName: "St-Amand" },
+      { id: 3, firstName: "Erwan", lastName: "Fosset-Greze" },
+      { id: 4, firstName: "Luka", lastName: "Fixmer" },
+      // Ajoute ici les autres étudiants autorisés
+    ];
+
+    // Récupérer les paramètres de l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const studentId = urlParams.get('id'); // Utilisation d'un identifiant unique au lieu du nom complet
+
+    // Trouver l'étudiant correspondant dans la liste
+    const student = authorizedStudents.find(s => s.id == studentId);
+
+    // Afficher le contenu ou le message d'erreur
+    if (student) {
+      document.getElementById('student-name').textContent = `${student.firstName} ${student.lastName}`;
+      document.getElementById('certificate-content').style.display = 'block';
+    } else {
+      document.getElementById('error-message').textContent = "Désolé, vous n'êtes pas autorisé à voir ce contenu. Veuillez vérifier votre lien d'accès.";
+    }
+  </script>
+</body>
+</html>
