@@ -166,7 +166,7 @@
       </p>
 
       <p>
-        <strong>Année académique :</strong> 2024-2025
+        <strong>Année académique :</strong> <span id="academic-year"></span>
       </p>
     </div>
   </div>
@@ -179,16 +179,20 @@
   <script>
     // Liste des étudiants autorisés avec prénom et nom
     const authorizedStudents = [
-      { id: "djhfnjd", firstName: "Nassim", lastName: "El Malki" },
-      { id: "xdvfbvcnb", firstName: "Yue Fei", lastName: "St-Amand" },
-      { id: "xcbvghx", firstName: "Erwan", lastName: "Fosset-Greze" },
-      { id: "xdvbnb", firstName: "Luka", lastName: "Fixmer" },
-        { id: "erdcvgr", firstName: "Samuel", lastName: "Mazure" },
-        { id: "cdvfrdf", firstName: "Abel", lastName: "Descamps" },
-        { id: "cxvddsf", firstName: "Gabriel", lastName: "Kleiber" },
-        { id: "zscdvfsd", firstName: "Loïs ", lastName: "MARICHY" },
-        { id: "asxdsswsf", firstName: "Lysandre", lastName: "MARICHY" },
-      // Ajoute ici les autres étudiants autorisés
+	//2024 2025 
+      { id: "djhfnjd", firstName: "Nassim", lastName: "El Malki",year: "2024-2025" },
+      { id: "xdvfbvcnb", firstName: "Yue Fei", lastName: "St-Amand",year: "2024-2025" },
+      { id: "xcbvghx", firstName: "Erwan", lastName: "Fosset-Greze",year: "2024-2025" },
+      { id: "xdvbnb", firstName: "Luka", lastName: "Fixmer",year: "2024-2025" },
+        { id: "erdcvgr", firstName: "Samuel", lastName: "Mazure",year: "2024-2025"},
+        { id: "cdvfrdf", firstName: "Abel", lastName: "Descamps",year: "2024-2025" },
+        { id: "cxvddsf", firstName: "Gabriel", lastName: "Kleiber",year: "2024-2025" },
+        { id: "zscdvfsd", firstName: "Loïs ", lastName: "MARICHY",year: "2024-2025" },
+        { id: "asxdsswsf", firstName: "Lysandre", lastName: "MARICHY",year: "2024-2025" },
+ // 2025 2026   
+        { id: "XNBCVSDKVJC", firstName: "Harone", lastName: "MANDILI",year: "2025-2026" },
+        { id: "DCSDCGVD", firstName: "Lina", lastName: "",year: "2025-2026" },
+        { id: "DZCFCQSC", firstName: "Camilia", lastName: "MANDILI",year: "2025-2026" }, 
     ];
 
     // Récupérer les paramètres de l'URL
@@ -201,6 +205,7 @@
     // Afficher le contenu ou le message d'erreur
     if (student) {
       document.getElementById('student-name').textContent = `${student.firstName} ${student.lastName}`;
+	  document.getElementById('academic-year').textContent = student.year;
       document.getElementById('certificate-content').style.display = 'block';
     } else {
       document.getElementById('error-message').textContent = "Désolé, vous n'êtes pas autorisé à voir ce contenu. Veuillez vérifier votre lien d'accès.";
