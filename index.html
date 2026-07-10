@@ -3,213 +3,432 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certificat Scratch - Validation</title>
+  <title>Certification Scratch — Salma Grami</title>
+  
+  <!-- Polices Premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
   <style>
-    /* Styles de base */
+    :root {
+      --primary: #4D97FF; /* Bleu Scratch */
+      --secondary: #FFAB19; /* Orange Scratch */
+      --dark: #0f172a;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --success: #22c55e;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f4f7f6;
-      color: #333;
       margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #007bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .error-message {
-      color: #ff4d4d;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 20px;
-    }
-
-    .certificate-content {
-      display: none;
-    }
-
-    h2 {
-      color: #007bff;
-    }
-
-    p {
-      font-size: 16px;
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    .signature {
-      margin-top: 30px;
-      font-size: 16px;
-      color: #333;
-      font-weight: normal;
+    /* --- NAVIGATION --- */
+    nav {
+      background: var(--dark);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-
-    .signature span {
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #f1f1f1;
-      margin-top: 50px;
-    }
-
-    footer a {
-      color: #007bff;
+    .brand { 
+      font-family: 'Space Grotesk', sans-serif; 
+      font-weight: 700; 
+      font-size: 1.2rem; 
+      display: flex; 
+      align-items: center; 
+      gap: 10px;
       text-decoration: none;
+      color: white;
+    }
+    .brand span { color: var(--secondary); }
+    .nav-tag {
+      font-size: 0.7rem;
+      background: rgba(255,255,255,0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    /* --- HERO SECTION --- */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 80px 20px 100px;
+      text-align: center;
+    }
+    .hero h1 { 
+      font-family: 'Space Grotesk', sans-serif; 
+      font-size: clamp(2rem, 5vw, 3rem); 
+      margin: 0; 
+      letter-spacing: -1px;
+    }
+    .hero p { 
+      opacity: 0.8; 
+      font-weight: 300; 
+      margin: 15px auto 0; 
+      max-width: 600px;
+      font-size: 1.1rem;
     }
 
-    /* Styles pour les listes */
-    ul {
-      padding-left: 20px;
+    .container { max-width: 1000px; margin: -60px auto 60px; padding: 0 20px; }
+
+    /* --- CARD CERTIFICAT --- */
+    .cert-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 50px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+      border-top: 10px solid var(--secondary);
+      position: relative;
+      overflow: hidden;
+      display: none; /* Affiché via JS */
     }
 
-    li {
+    /* Ruban "Officiel" */
+    .cert-card::before {
+      content: "VALIDE";
+      position: absolute;
+      top: 30px;
+      right: -35px;
+      background: #f1f5f9;
+      padding: 8px 45px;
+      transform: rotate(45deg);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 2px;
+    }
+
+    .badge-check {
+      width: 90px;
+      height: 90px;
+      background: #f0fdf4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      border: 3px solid var(--success);
+      box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.2);
+    }
+
+    .student-info { text-align: center; margin-bottom: 50px; }
+    .student-info .label { 
+      text-transform: uppercase; 
+      letter-spacing: 3px; 
+      color: var(--muted); 
+      font-size: 0.85rem; 
+      font-weight: 600;
       margin-bottom: 10px;
-    }
-
-    /* Styles pour l'image */
-    .scratch-image {
       display: block;
-      margin: 20px auto;
-      max-width: 150px;
-      height: auto;
+    }
+    .student-info h2 { 
+      font-size: clamp(1.8rem, 4vw, 2.8rem); 
+      margin: 0; 
+      font-family: 'Space Grotesk', sans-serif; 
+      color: var(--dark);
+    }
+    .cert-desc { 
+      color: var(--muted); 
+      max-width: 550px; 
+      margin: 20px auto 0; 
+      font-size: 1.05rem;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .container {
-        margin: 15px;
-        padding: 15px;
-      }
+    /* --- GRID COMPÉTENCES --- */
+    .curriculum-section { margin-top: 40px; }
+    .curriculum-header { 
+      font-weight: 700; 
+      margin-bottom: 25px; 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+      color: var(--dark);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .curriculum-header::after { content: ""; flex: 1; height: 1px; background: #e2e8f0; }
 
-      header h1 {
-        font-size: 24px;
-      }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      border: 1px solid #f1f5f9;
+      transition: transform 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-3px); background: #f1f5f9; }
+    .skill-card b { color: var(--primary); display: block; margin-bottom: 4px; font-size: 1rem; }
+    .icon-check { 
+      background: var(--success); 
+      color: white; 
+      width: 22px; 
+      height: 22px; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
 
-      h2 {
-        font-size: 20px;
-      }
+    /* --- SIGNATURES --- */
+    .cert-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 40px;
+      margin-top: 50px;
+      border-top: 2px dashed #f1f5f9;
+    }
+    .sig-block { font-size: 0.95rem; }
+    .sig-block .name { 
+      display: block; 
+      font-weight: 700; 
+      font-size: 1.2rem; 
+      color: var(--dark); 
+      font-family: 'Space Grotesk', sans-serif;
+      margin-top: 5px;
+    }
+    .year-tag {
+      background: var(--dark);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
 
-      p {
-        font-size: 14px;
-      }
+    /* --- BOUTONS --- */
+    .actions { text-align: center; margin-top: 40px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      font-size: 1rem;
+      border: none;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 15px -3px rgba(77, 151, 255, 0.3); }
+    .btn-primary:hover { background: #3b82f6; transform: translateY(-2px); }
+    
+    .btn-orange { background: var(--secondary); color: white; box-shadow: 0 10px 15px -3px rgba(255, 171, 25, 0.3); }
+    .btn-orange:hover { background: #e59916; transform: translateY(-2px); }
 
-      .scratch-image {
-        max-width: 100px;
-      }
+    /* --- ERROR STATE --- */
+    #error-message {
+      display: none;
+      background: white;
+      padding: 60px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+    }
+
+    /* --- PRINT OPTIMIZATION --- */
+    @media print {
+      nav, .hero, .actions, footer { display: none !important; }
+      body { background: white; }
+      .container { margin: 0; max-width: 100%; }
+      .cert-card { box-shadow: none !important; border: 1px solid #eee !important; padding: 30px; }
+      .skill-card { background: white !important; border: 1px solid #eee !important; }
+    }
+
+    @media (max-width: 650px) {
+      .cert-card { padding: 30px 20px; }
+      .cert-footer { flex-direction: column; align-items: center; text-align: center; gap: 30px; }
+      .skills-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Certificat de Réussite Scratch</h1>
+
+  <nav>
+    <a href="#" class="brand">Grami <span>Salma</span></a>
+    <div class="nav-tag">Certification Officielle</div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1 id="hero-title">Félicitations pour votre réussite !</h1>
+      <p id="hero-subtitle">La maîtrise de la programmation est le premier pas vers la création du futur.</p>
+    </div>
   </header>
 
-  <div class="container">
-    <!-- Message d'erreur en cas d'accès non autorisé -->
-    <div id="error-message" class="error-message"></div>
-
-    <!-- Contenu du certificat (affiché uniquement si l'étudiant est autorisé) -->
-    <div id="certificate-content" class="certificate-content">
-      <h2>Félicitations, <span id="student-name"></span> !</h2>
-      <p>
-       Vous avez passé le cours de Scratch avec succès !
-      </p>
-     
-      <!-- Image de Scratch -->
-      <img src="download.jpg" alt="Logo de Scratch" class="scratch-image">
-
-      
-      <br>
-      <p>
-        <strong>Contenu du cours :</strong> <br>
-        <ul>
-          <li><strong>Introduction à Scratch</strong>: Découverte des composants de l'interface et réalisation d'une activité simple pour faire bouger un personnage à l'écran.</li>
-          <li><strong>Personnalisation des éléments</strong>: Découverte de l'interface de dessin et création de personnages et arrière-plans personnalisés.</li>
-          <li><strong>Les blocs de base – Événements et mouvement</strong>: Introduction aux blocs d'événements pour déclencher des actions et exploration des blocs de mouvement.</li>
-          <li><strong>Les blocs d’apparence</strong>: Apprentissage de la gestion de l'apparence des personnages et arrière-plans.</li>
-          <li><strong>Les blocs de contrôle</strong>: Utilisation des boucles et conditions pour contrôler les actions dans le jeu.</li>
-          <li><strong>Les blocs de capteurs</strong>: Introduction aux capteurs et utilisation dans des projets pratiques.</li>
-          <li><strong>Les opérateurs</strong>: Utilisation des opérateurs pour manipuler des valeurs et construire des expressions complexes.</li>
-          <li><strong>Sons et variables</strong>: Ajout de sons pour améliorer les projets et introduction aux variables pour stocker des informations dans les jeux.</li>
-          <li><strong>Consolidation et projets libres</strong>: Développement de projets personnalisés en utilisant les différents blocs étudiés et explorations des extensions.</li>
-          <li><strong>Extensions Scratch</strong>: Introduction aux extensions disponibles pour étendre les capacités de Scratch, telles que les extensions pour la vidéo, la traduction, etc.</li>
-        </ul>
-      </p>
-
-
-      <p class="signature">
-        Sous la supervision de 
-        <span>Grami Salma</span><br>
-        Ingénieur en Informatique<br>
-        Email: <a href="mailto:gramisalma0@gmail.com">gramisalma0@gmail.com</a>
-      </p>
-
-      <p>
-        <strong>Année académique :</strong> <span id="academic-year"></span>
-      </p>
-    </div>
-  </div>
-
-  <footer>
-    <p>CopyRight: <a href="https://github.com/gramisalma" target="_blank">Grami Salma</a></p>
+  <main class="container">
     
+    <!-- État Erreur (ID invalide) -->
+    <div id="error-message">
+      <div style="font-size: 4rem; margin-bottom: 20px;">🕵️‍♂️</div>
+      <h2 style="font-family: 'Space Grotesk'; margin: 0;">Certificat introuvable</h2>
+      <p style="color: var(--muted);">L'identifiant fourni ne correspond à aucun élève certifié.<br>Veuillez vérifier votre lien d'accès.</p>
+      <a href="?" class="btn btn-primary" style="margin-top: 20px;">Retour à l'accueil</a>
+    </div>
+
+    <!-- Le Certificat -->
+    <div id="certificate-content" class="cert-card">
+      <div class="badge-check">
+        <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+
+      <div class="student-info">
+        <span class="label">Certificat de Réussite</span>
+        <h2 id="student-name">Prénom Nom</h2>
+        <p class="cert-desc">
+          Ce document atteste que l'élève a complété avec succès le cursus de formation 
+          <b>Scratch : Fondamentaux et Programmation Créative</b>, démontrant une maîtrise technique et algorithmique.
+        </p>
+      </div>
+
+      <div class="curriculum-section">
+        <div class="curriculum-header">Compétences validées</div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="icon-check">✓</div>
+            <div><b>Algorithmique</b>Structures de contrôle (boucles, conditions, si-alors).</div>
+          </div>
+          <div class="skill-card">
+            <div class="icon-check">✓</div>
+            <div><b>Variables & Données</b>Gestion du score, chronomètre et stockage d'infos.</div>
+          </div>
+          <div class="skill-card">
+            <div class="icon-check">✓</div>
+            <div><b>Logique de Capteurs</b>Interactivité avancée et détection de collisions.</div>
+          </div>
+          <div class="skill-card">
+            <div class="icon-check">✓</div>
+            <div><b>Coordination Multimédia</b>Animation de sprites, sons et design graphique.</div>
+          </div>
+          <div class="skill-card">
+            <div class="icon-check">✓</div>
+            <div><b>Mathématiques</b>Système de coordonnées X/Y et opérateurs logiques.</div>
+          </div>
+          <div class="skill-card">
+            <div class="icon-check">✓</div>
+            <div><b>Projet Final</b>Conception et publication d'un jeu vidéo complet.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-footer">
+        <div class="sig-block">
+          <span class="label" style="letter-spacing: 1px;">Instructrice</span>
+          <span class="name">Salma Grami</span>
+          <span style="color: var(--muted); font-size: 0.85rem;">Ingénieur en Informatique</span>
+        </div>
+        <div style="text-align: right;">
+          <span class="label" style="letter-spacing: 1px; margin-bottom: 8px;">Année Académique</span>
+          <div class="year-tag" id="academic-year">2024-2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions Marketing / Impression -->
+    <div class="actions" id="action-area" style="display:none;">
+      <!-- Rempli dynamiquement par JS -->
+    </div>
+
+  </main>
+
+  <footer style="text-align: center; color: var(--muted); padding: 40px 20px; font-size: 0.9rem; border-top: 1px solid #e2e8f0;">
+    <p>© <span id="current-year"></span> Salma Grami — Portfolio Pédagogique</p>
+    <a href="https://github.com/gramisalma" target="_blank" style="color: var(--primary); text-decoration: none;">GitHub Profile</a>
   </footer>
 
   <script>
-    // Liste des étudiants autorisés avec prénom et nom
     const authorizedStudents = [
-	//2024 2025 
-      { id: "djhfnjd", firstName: "Nassim", lastName: "El Malki",year: "2024-2025" },
-      { id: "xdvfbvcnb", firstName: "Yue Fei", lastName: "St-Amand",year: "2024-2025" },
-      { id: "xcbvghx", firstName: "Erwan", lastName: "Fosset-Greze",year: "2024-2025" },
-      { id: "xdvbnb", firstName: "Luka", lastName: "Fixmer",year: "2024-2025" },
-        { id: "erdcvgr", firstName: "Samuel", lastName: "Mazure",year: "2024-2025"},
-        { id: "cdvfrdf", firstName: "Abel", lastName: "Descamps",year: "2024-2025" },
-        { id: "cxvddsf", firstName: "Gabriel", lastName: "Kleiber",year: "2024-2025" },
-        { id: "zscdvfsd", firstName: "Loïs ", lastName: "MARICHY",year: "2024-2025" },
-        { id: "asxdsswsf", firstName: "Lysandre", lastName: "MARICHY",year: "2024-2025" },
- // 2025 2026   
-        { id: "XNBCVSDKVJC", firstName: "Harone", lastName: "MANDILI",year: "2025-2026" },
-        { id: "DCSDCGVD", firstName: "Lina", lastName: "ARGOUBI",year: "2025-2026" },
-        { id: "DZCFCQSC", firstName: "Camilia", lastName: "MANDILI",year: "2025-2026" }, 
+      { id: "djhfnjd", firstName: "Nassim", lastName: "El Malki", year: "2024-2025" },
+      { id: "xdvfbvcnb", firstName: "Yue Fei", lastName: "St-Amand", year: "2024-2025" },
+      { id: "xcbvghx", firstName: "Erwan", lastName: "Fosset-Greze", year: "2024-2025" },
+      { id: "xdvbnb", firstName: "Luka", lastName: "Fixmer", year: "2024-2025" },
+      { id: "erdcvgr", firstName: "Samuel", lastName: "Mazure", year: "2024-2025"},
+      { id: "cdvfrdf", firstName: "Abel", lastName: "Descamps", year: "2024-2025" },
+      { id: "cxvddsf", firstName: "Gabriel", lastName: "Kleiber", year: "2024-2025" },
+      { id: "zscdvfsd", firstName: "Loïs", lastName: "MARICHY", year: "2024-2025" },
+      { id: "asxdsswsf", firstName: "Lysandre", lastName: "MARICHY", year: "2024-2025" },
+      { id: "XNBCVSDKVJC", firstName: "Harone", lastName: "MANDILI", year: "2025-2026" },
+      { id: "DCSDCGVD", firstName: "Lina", lastName: "ARGOUBI", year: "2025-2026" },
+      { id: "DZCFCQSC", firstName: "Camilia", lastName: "MANDILI", year: "2025-2026" }, 
     ];
 
-    // Récupérer les paramètres de l'URL
     const urlParams = new URLSearchParams(window.location.search);
-    const studentId = urlParams.get('id'); // Utilisation d'un identifiant unique au lieu du nom complet
+    const studentId = urlParams.get('id');
+    
+    const certCard = document.getElementById('certificate-content');
+    const errorMsg = document.getElementById('error-message');
+    const actionArea = document.getElementById('action-area');
+    const studentNameDisplay = document.getElementById('student-name');
+    const academicYearDisplay = document.getElementById('academic-year');
+    const heroTitle = document.getElementById('hero-title');
 
-    // Trouver l'étudiant correspondant dans la liste
-    const student = authorizedStudents.find(s => s.id == studentId);
+    // LOGIQUE DE NAVIGATION
+    if (studentId === null) {
+      // --- MODE MARKETING / DÉMO ---
+      heroTitle.textContent = "Le cursus Scratch par Salma Grami";
+      studentNameDisplay.textContent = "Futur Développeur";
+      studentNameDisplay.style.color = "#cbd5e1";
+      academicYearDisplay.textContent = "202X-202X";
+      
+      certCard.style.display = 'block';
+      actionArea.innerHTML = `
+        <a href="mailto:gramisalma0@gmail.com" class="btn btn-orange">
+          🚀 S'inscrire & obtenir son propre certificat
+        </a>
+        <p style="margin-top:20px; font-size:0.85rem; color:var(--muted);">Ceci est une démonstration du certificat délivré à mes élèves.</p>
+      `;
+      actionArea.style.display = 'block';
 
-    // Afficher le contenu ou le message d'erreur
-    if (student) {
-      document.getElementById('student-name').textContent = `${student.firstName} ${student.lastName}`;
-	  document.getElementById('academic-year').textContent = student.year;
-      document.getElementById('certificate-content').style.display = 'block';
     } else {
-      document.getElementById('error-message').textContent = "Désolé, vous n'êtes pas autorisé à voir ce contenu. Veuillez vérifier votre lien d'accès.";
+      // --- MODE ÉLÈVE ---
+      const student = authorizedStudents.find(s => s.id === studentId);
+
+      if (student) {
+        studentNameDisplay.textContent = `${student.firstName} ${student.lastName}`;
+        academicYearDisplay.textContent = student.year;
+        certCard.style.display = 'block';
+        
+        actionArea.innerHTML = `
+          <button onclick="window.print()" class="btn btn-primary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:8px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2m-2 4H8v-4h8v4z"></path></svg>
+            Imprimer mon diplôme
+          </button>
+        `;
+        actionArea.style.display = 'block';
+      } else {
+        // ID présent mais incorrect
+        errorMsg.style.display = 'block';
+      }
     }
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
