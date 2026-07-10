@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Certification Scratch — Salma Grami</title>
+  <title>Validation Certificat Scratch — Salma Grami</title>
   
-  <!-- Polices Premium -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --primary: #4D97FF; /* Bleu Scratch */
-      --secondary: #FFAB19; /* Orange Scratch */
+      --primary: #4D97FF;
+      --secondary: #FFAB19;
       --dark: #0f172a;
-      --bg: #f8fafc;
+      --bg: #f1f5f9;
       --white: #ffffff;
       --text: #1e293b;
       --muted: #64748b;
@@ -22,8 +21,6 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: 'Outfit', sans-serif;
@@ -32,7 +29,6 @@
       line-height: 1.6;
     }
 
-    /* --- NAVIGATION --- */
     nav {
       background: var(--dark);
       padding: 1rem 2rem;
@@ -40,232 +36,120 @@
       justify-content: space-between;
       align-items: center;
       color: white;
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
-    .brand { 
-      font-family: 'Space Grotesk', sans-serif; 
-      font-weight: 700; 
-      font-size: 1.2rem; 
-      display: flex; 
-      align-items: center; 
-      gap: 10px;
-      text-decoration: none;
-      color: white;
-    }
+    .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-decoration: none; color: white; }
     .brand span { color: var(--secondary); }
-    .nav-tag {
-      font-size: 0.7rem;
-      background: rgba(255,255,255,0.1);
-      padding: 4px 10px;
-      border-radius: 100px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
 
-    /* --- HERO SECTION --- */
     .hero {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: white;
-      padding: 80px 20px 100px;
+      padding: 60px 20px 100px;
       text-align: center;
     }
-    .hero h1 { 
-      font-family: 'Space Grotesk', sans-serif; 
-      font-size: clamp(2rem, 5vw, 3rem); 
-      margin: 0; 
-      letter-spacing: -1px;
-    }
-    .hero p { 
-      opacity: 0.8; 
-      font-weight: 300; 
-      margin: 15px auto 0; 
-      max-width: 600px;
-      font-size: 1.1rem;
-    }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 2.8rem); margin: 0; }
+    .hero p { opacity: 0.8; margin-top: 10px; font-weight: 300; font-size: 1.1rem; }
 
-    .container { max-width: 1000px; margin: -60px auto 60px; padding: 0 20px; }
+    .container { max-width: 900px; margin: -60px auto 60px; padding: 0 20px; }
 
-    /* --- CARD CERTIFICAT --- */
+    /* --- CERTIFICATE CARD --- */
     .cert-card {
       background: var(--white);
       border-radius: 24px;
       padding: 50px;
       box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
       border-top: 10px solid var(--secondary);
+      display: none; /* JS */
       position: relative;
-      overflow: hidden;
-      display: none; /* Affiché via JS */
     }
 
-    /* Ruban "Officiel" */
-    .cert-card::before {
-      content: "VALIDE";
-      position: absolute;
-      top: 30px;
-      right: -35px;
-      background: #f1f5f9;
-      padding: 8px 45px;
-      transform: rotate(45deg);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #94a3b8;
-      letter-spacing: 2px;
-    }
+    .header-cert { text-align: center; margin-bottom: 30px; }
+    .scratch-logo { max-width: 140px; margin-bottom: 10px; }
+    
+    .student-info { text-align: center; margin-bottom: 40px; }
+    .student-info .label { text-transform: uppercase; letter-spacing: 3px; color: var(--muted); font-size: 0.8rem; font-weight: 700; }
+    .student-info h2 { font-size: clamp(1.8rem, 5vw, 3rem); margin: 10px 0; font-family: 'Space Grotesk', sans-serif; color: var(--dark); }
 
-    .badge-check {
-      width: 90px;
-      height: 90px;
-      background: #f0fdf4;
-      border-radius: 50%;
+    /* --- PEDAGOGY BOX (MARKETING ARGUMENT) --- */
+    .pedagogy-badge {
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 35px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin: 0 auto 30px;
-      border: 3px solid var(--success);
-      box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.2);
-    }
-
-    .student-info { text-align: center; margin-bottom: 50px; }
-    .student-info .label { 
-      text-transform: uppercase; 
-      letter-spacing: 3px; 
-      color: var(--muted); 
-      font-size: 0.85rem; 
-      font-weight: 600;
-      margin-bottom: 10px;
-      display: block;
-    }
-    .student-info h2 { 
-      font-size: clamp(1.8rem, 4vw, 2.8rem); 
-      margin: 0; 
-      font-family: 'Space Grotesk', sans-serif; 
-      color: var(--dark);
-    }
-    .cert-desc { 
-      color: var(--muted); 
-      max-width: 550px; 
-      margin: 20px auto 0; 
-      font-size: 1.05rem;
-    }
-
-    /* --- GRID COMPÉTENCES --- */
-    .curriculum-section { margin-top: 40px; }
-    .curriculum-header { 
-      font-weight: 700; 
-      margin-bottom: 25px; 
-      display: flex; 
-      align-items: center; 
-      gap: 15px; 
-      color: var(--dark);
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    .curriculum-header::after { content: ""; flex: 1; height: 1px; background: #e2e8f0; }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
     }
-    .skill-card {
-      background: #f8fafc;
-      padding: 20px;
-      border-radius: 16px;
-      font-size: 0.95rem;
+    .pedagogy-badge span { font-size: 2rem; }
+    .pedagogy-badge p { margin: 0; font-size: 0.95rem; color: #1e40af; font-weight: 500; }
+    .pedagogy-badge p b { color: var(--primary); }
+
+    /* --- CURRICULUM --- */
+    .details-section h3 { 
+      font-family: 'Space Grotesk', sans-serif; 
+      color: var(--dark);
+      margin-bottom: 20px;
       display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      border: 1px solid #f1f5f9;
-      transition: transform 0.2s;
-    }
-    .skill-card:hover { transform: translateY(-3px); background: #f1f5f9; }
-    .skill-card b { color: var(--primary); display: block; margin-bottom: 4px; font-size: 1rem; }
-    .icon-check { 
-      background: var(--success); 
-      color: white; 
-      width: 22px; 
-      height: 22px; 
-      border-radius: 50%; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      margin-top: 2px;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 10px;
     }
 
-    /* --- SIGNATURES --- */
-    .cert-footer {
+    .program-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    .program-item {
+      font-size: 0.9rem;
+      padding: 10px;
+      background: #f8fafc;
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+    .program-item strong { color: var(--dark); }
+
+    /* --- SIGNATURE --- */
+    .footer-cert {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       padding-top: 40px;
-      margin-top: 50px;
-      border-top: 2px dashed #f1f5f9;
+      margin-top: 40px;
+      border-top: 1px solid #e2e8f0;
     }
-    .sig-block { font-size: 0.95rem; }
-    .sig-block .name { 
-      display: block; 
-      font-weight: 700; 
-      font-size: 1.2rem; 
-      color: var(--dark); 
-      font-family: 'Space Grotesk', sans-serif;
-      margin-top: 5px;
-    }
-    .year-tag {
-      background: var(--dark);
-      color: white;
-      padding: 6px 18px;
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-family: 'JetBrains Mono', monospace;
-    }
+    .sig-block .name { display: block; font-weight: 700; font-size: 1.2rem; font-family: 'Space Grotesk'; }
+    .year-tag { background: var(--dark); color: white; padding: 6px 20px; border-radius: 100px; font-family: 'JetBrains Mono'; font-size: 0.85rem; }
 
-    /* --- BOUTONS --- */
+    /* --- ACTIONS --- */
     .actions { text-align: center; margin-top: 40px; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 32px;
+      text-decoration: none;
+      padding: 16px 35px;
       border-radius: 12px;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       cursor: pointer;
       transition: 0.3s;
-      text-decoration: none;
-      font-size: 1rem;
       border: none;
+      font-size: 1rem;
     }
-    .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 15px -3px rgba(77, 151, 255, 0.3); }
-    .btn-primary:hover { background: #3b82f6; transform: translateY(-2px); }
-    
-    .btn-orange { background: var(--secondary); color: white; box-shadow: 0 10px 15px -3px rgba(255, 171, 25, 0.3); }
-    .btn-orange:hover { background: #e59916; transform: translateY(-2px); }
+    .btn-print { background: var(--primary); color: white; box-shadow: 0 10px 15px -3px rgba(77,151,255,0.4); }
+    .btn-signup { background: var(--secondary); color: white; box-shadow: 0 10px 15px -3px rgba(255,171,25,0.4); }
+    .btn:hover { transform: translateY(-3px); }
 
-    /* --- ERROR STATE --- */
-    #error-message {
-      display: none;
-      background: white;
-      padding: 60px;
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
-    }
-
-    /* --- PRINT OPTIMIZATION --- */
+    /* --- PRINT --- */
     @media print {
       nav, .hero, .actions, footer { display: none !important; }
-      body { background: white; }
-      .container { margin: 0; max-width: 100%; }
-      .cert-card { box-shadow: none !important; border: 1px solid #eee !important; padding: 30px; }
-      .skill-card { background: white !important; border: 1px solid #eee !important; }
+      .container { margin-top: 0; }
+      .cert-card { box-shadow: none; border: 2px solid #eee; }
     }
-
-    @media (max-width: 650px) {
-      .cert-card { padding: 30px 20px; }
-      .cert-footer { flex-direction: column; align-items: center; text-align: center; gap: 30px; }
-      .skills-grid { grid-template-columns: 1fr; }
+    @media (max-width: 700px) {
+      .program-grid { grid-template-columns: 1fr; }
+      .footer-cert { flex-direction: column; align-items: center; gap: 30px; text-align: center; }
     }
   </style>
 </head>
@@ -273,94 +157,82 @@
 
   <nav>
     <a href="#" class="brand">Grami <span>Salma</span></a>
-    <div class="nav-tag">Certification Officielle</div>
+    <div style="font-size: 0.8rem; opacity: 0.7; font-weight: 600;">PORTFOLIO PÉDAGOGIQUE</div>
   </nav>
 
   <header class="hero">
     <div class="container">
-      <h1 id="hero-title">Félicitations pour votre réussite !</h1>
-      <p id="hero-subtitle">La maîtrise de la programmation est le premier pas vers la création du futur.</p>
+      <h1>Attestation de Réussite</h1>
+      <p>Célébrer l'effort, la logique et la créativité numérique.</p>
     </div>
   </header>
 
   <main class="container">
     
-    <!-- État Erreur (ID invalide) -->
-    <div id="error-message">
-      <div style="font-size: 4rem; margin-bottom: 20px;">🕵️‍♂️</div>
-      <h2 style="font-family: 'Space Grotesk'; margin: 0;">Certificat introuvable</h2>
-      <p style="color: var(--muted);">L'identifiant fourni ne correspond à aucun élève certifié.<br>Veuillez vérifier votre lien d'accès.</p>
-      <a href="?" class="btn btn-primary" style="margin-top: 20px;">Retour à l'accueil</a>
+    <!-- Erreur -->
+    <div id="error-message" style="display:none; text-align:center; background:white; padding:40px; border-radius:20px;">
+      <h2 style="color:#be123c">Accès restreint</h2>
+      <p>Veuillez utiliser le lien personnel fourni par votre instructrice.</p>
     </div>
 
-    <!-- Le Certificat -->
+    <!-- Certificat -->
     <div id="certificate-content" class="cert-card">
-      <div class="badge-check">
-        <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      
+      <div class="header-cert">
+        <img src="download.jpg" alt="Logo Scratch" class="scratch-logo">
       </div>
 
       <div class="student-info">
-        <span class="label">Certificat de Réussite</span>
-        <h2 id="student-name">Prénom Nom</h2>
-        <p class="cert-desc">
-          Ce document atteste que l'élève a complété avec succès le cursus de formation 
-          <b>Scratch : Fondamentaux et Programmation Créative</b>, démontrant une maîtrise technique et algorithmique.
+        <span class="label">Ce certificat est fièrement décerné à</span>
+        <h2 id="student-name">Élève en formation</h2>
+      </div>
+
+      <!-- ARGUMENTS PÉDAGOGIQUES -->
+      <div class="pedagogy-badge">
+        <span>💡</span>
+        <p>
+          L'élève a bénéficié d'un <b>accompagnement personnalisé</b> adapté à son propre rythme. 
+          Ma méthode repose sur un principe fondamental : <b>comprendre la logique algorithmique avant d'appliquer le code</b>, garantissant une maîtrise durable.
         </p>
       </div>
 
-      <div class="curriculum-section">
-        <div class="curriculum-header">Compétences validées</div>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="icon-check">✓</div>
-            <div><b>Algorithmique</b>Structures de contrôle (boucles, conditions, si-alors).</div>
-          </div>
-          <div class="skill-card">
-            <div class="icon-check">✓</div>
-            <div><b>Variables & Données</b>Gestion du score, chronomètre et stockage d'infos.</div>
-          </div>
-          <div class="skill-card">
-            <div class="icon-check">✓</div>
-            <div><b>Logique de Capteurs</b>Interactivité avancée et détection de collisions.</div>
-          </div>
-          <div class="skill-card">
-            <div class="icon-check">✓</div>
-            <div><b>Coordination Multimédia</b>Animation de sprites, sons et design graphique.</div>
-          </div>
-          <div class="skill-card">
-            <div class="icon-check">✓</div>
-            <div><b>Mathématiques</b>Système de coordonnées X/Y et opérateurs logiques.</div>
-          </div>
-          <div class="skill-card">
-            <div class="icon-check">✓</div>
-            <div><b>Projet Final</b>Conception et publication d'un jeu vidéo complet.</div>
-          </div>
+      <div class="details-section">
+        <h3>Programme technique validé</h3>
+        <div class="program-grid">
+          <div class="program-item"><strong>1. Introduction</strong> : Interface et premier script de mouvement.</div>
+          <div class="program-item"><strong>2. Design</strong> : Création graphique de sprites et d'arrière-plans.</div>
+          <div class="program-item"><strong>3. Événements</strong> : Déclencheurs et logique de mouvement.</div>
+          <div class="program-item"><strong>4. Apparence</strong> : Costumes, effets et narration visuelle.</div>
+          <div class="program-item"><strong>5. Contrôle</strong> : Maîtrise des boucles et conditions (Si/Alors).</div>
+          <div class="program-item"><strong>6. Capteurs</strong> : Interactivité et détection d'environnement.</div>
+          <div class="program-item"><strong>7. Opérateurs</strong> : Calculs logiques et mathématiques.</div>
+          <div class="program-item"><strong>8. Données</strong> : Utilisation des variables et intégration sonore.</div>
+          <div class="program-item"><strong>9. Autonomie</strong> : Développement d'un projet libre de A à Z.</div>
+          <div class="program-item"><strong>10. Extensions</strong> : Vidéo, traduction et outils avancés.</div>
         </div>
       </div>
 
-      <div class="cert-footer">
+      <div class="footer-cert">
         <div class="sig-block">
-          <span class="label" style="letter-spacing: 1px;">Instructrice</span>
+          <span class="label" style="margin-bottom: 5px;">Instructrice Référente</span>
           <span class="name">Salma Grami</span>
           <span style="color: var(--muted); font-size: 0.85rem;">Ingénieur en Informatique</span>
         </div>
         <div style="text-align: right;">
-          <span class="label" style="letter-spacing: 1px; margin-bottom: 8px;">Année Académique</span>
+          <span class="label" style="margin-bottom: 5px;">Session Académique</span>
           <div class="year-tag" id="academic-year">2024-2025</div>
         </div>
       </div>
     </div>
 
-    <!-- Actions Marketing / Impression -->
-    <div class="actions" id="action-area" style="display:none;">
-      <!-- Rempli dynamiquement par JS -->
-    </div>
+    <!-- Zone d'actions -->
+    <div class="actions" id="action-area"></div>
 
   </main>
 
-  <footer style="text-align: center; color: var(--muted); padding: 40px 20px; font-size: 0.9rem; border-top: 1px solid #e2e8f0;">
-    <p>© <span id="current-year"></span> Salma Grami — Portfolio Pédagogique</p>
-    <a href="https://github.com/gramisalma" target="_blank" style="color: var(--primary); text-decoration: none;">GitHub Profile</a>
+  <footer style="text-align: center; color: var(--muted); padding-bottom: 40px; font-size: 0.9rem;">
+    <p>© <span id="current-year"></span> Salma Grami — Coaching Informatique & Programmation</p>
+    <a href="mailto:gramisalma0@gmail.com" style="color: var(--primary); text-decoration:none;">gramisalma0@gmail.com</a>
   </footer>
 
   <script>
@@ -381,50 +253,33 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const studentId = urlParams.get('id');
-    
     const certCard = document.getElementById('certificate-content');
-    const errorMsg = document.getElementById('error-message');
     const actionArea = document.getElementById('action-area');
-    const studentNameDisplay = document.getElementById('student-name');
-    const academicYearDisplay = document.getElementById('academic-year');
-    const heroTitle = document.getElementById('hero-title');
+    const nameDisplay = document.getElementById('student-name');
+    const yearDisplay = document.getElementById('academic-year');
 
-    // LOGIQUE DE NAVIGATION
     if (studentId === null) {
-      // --- MODE MARKETING / DÉMO ---
-      heroTitle.textContent = "Le cursus Scratch par Salma Grami";
-      studentNameDisplay.textContent = "Futur Développeur";
-      studentNameDisplay.style.color = "#cbd5e1";
-      academicYearDisplay.textContent = "202X-202X";
-      
+      // MODE MARKETING (Sans ID)
+      nameDisplay.textContent = "Futur Expert Scratch";
+      nameDisplay.style.opacity = "0.3";
       certCard.style.display = 'block';
       actionArea.innerHTML = `
-        <a href="mailto:gramisalma0@gmail.com" class="btn btn-orange">
-          🚀 S'inscrire & obtenir son propre certificat
-        </a>
-        <p style="margin-top:20px; font-size:0.85rem; color:var(--muted);">Ceci est une démonstration du certificat délivré à mes élèves.</p>
+        <a href="mailto:gramisalma0@gmail.com" class="btn btn-signup">🚀 S'inscrire & Obtenir mon Certificat</a>
+        <p style="margin-top:15px; font-size:0.8rem; color:var(--muted);">Découvrez comment j'accompagne mes élèves vers la réussite.</p>
       `;
-      actionArea.style.display = 'block';
-
     } else {
-      // --- MODE ÉLÈVE ---
       const student = authorizedStudents.find(s => s.id === studentId);
-
       if (student) {
-        studentNameDisplay.textContent = `${student.firstName} ${student.lastName}`;
-        academicYearDisplay.textContent = student.year;
+        // MODE ELEVE VALIDE
+        nameDisplay.textContent = `${student.firstName} ${student.lastName}`;
+        yearDisplay.textContent = student.year;
         certCard.style.display = 'block';
-        
         actionArea.innerHTML = `
-          <button onclick="window.print()" class="btn btn-primary">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:8px;"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2m-2 4H8v-4h8v4z"></path></svg>
-            Imprimer mon diplôme
-          </button>
+          <button onclick="window.print()" class="btn btn-print">🖨️ Imprimer mon Certificat Officiel</button>
         `;
-        actionArea.style.display = 'block';
       } else {
-        // ID présent mais incorrect
-        errorMsg.style.display = 'block';
+        // MAUVAIS ID
+        document.getElementById('error-message').style.display = 'block';
       }
     }
 
