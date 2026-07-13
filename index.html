@@ -1,289 +1,364 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Validation Certificat Scratch — Salma Grami</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #4D97FF;
-      --secondary: #FFAB19;
-      --dark: #0f172a;
-      --bg: #f1f5f9;
-      --white: #ffffff;
-      --text: #1e293b;
-      --muted: #64748b;
-      --success: #22c55e;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grami Salma — Cours de Scratch | Certificat de réussite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F8F6F0;
+    --bg-soft: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-line: rgba(23,20,58,0.10);
+    --gold: #C08A22;
+    --gold-soft: rgba(192,138,34,0.12);
+    --teal: #0E9285;
+    --teal-soft: rgba(14,146,133,0.10);
+    --text: #17143A;
+    --text-muted: #635D8A;
+    --radius: 18px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Outfit', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
 
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Outfit', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 15% 0%, rgba(14,146,133,0.07), transparent 40%),
+      radial-gradient(circle at 85% 20%, rgba(192,138,34,0.09), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--display); margin:0; letter-spacing:-0.01em;}
+  p{margin:0;}
+  a{color:inherit;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
 
-    nav {
-      background: var(--dark);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
-    .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-decoration: none; color: white; }
-    .brand span { color: var(--secondary); }
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1080px; margin:0 auto; padding:28px 24px;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:40px; height:40px; border-radius:10px;
+    background:linear-gradient(135deg, var(--gold), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:700; color:#0F0D26; font-size:16px;
+  }
+  .brand-name{ font-family:var(--display); font-weight:600; font-size:16px; }
+  .brand-role{ font-family:var(--mono); font-size:11px; color:var(--text-muted); }
+  nav .cta-link{
+    font-family:var(--mono); font-size:13px; color:var(--text);
+    border:1px solid var(--surface-line); padding:10px 18px; border-radius:999px;
+    text-decoration:none; transition:border-color .2s ease, color .2s ease;
+  }
+  nav .cta-link:hover{ border-color:var(--teal); color:var(--teal); }
 
-    .hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: white;
-      padding: 60px 20px 100px;
-      text-align: center;
-    }
-    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 2.8rem); margin: 0; }
-    .hero p { opacity: 0.8; margin-top: 10px; font-weight: 300; font-size: 1.1rem; }
+  /* ---------- HERO ---------- */
+  .hero{
+    max-width:820px; margin:0 auto; padding:64px 24px 40px; text-align:center;
+  }
+  .hero h1{
+    font-size:clamp(32px, 5vw, 52px);
+    font-weight:700;
+    margin:18px 0 20px;
+  }
+  .hero h1 span{ color:var(--gold); }
+  .hero p.lead{
+    font-size:18px; color:var(--text-muted); max-width:600px; margin:0 auto 32px;
+  }
+  .hero-actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .scratch-image{
+    display:block; margin:0 auto 22px; max-width:96px; height:auto;
+    border-radius:16px; padding:10px; background:var(--surface);
+    border:1px solid var(--surface-line); box-shadow:0 12px 30px -18px rgba(23,20,58,0.35);
+  }
+  .btn{
+    font-family:var(--body); font-weight:500; font-size:15px;
+    padding:14px 26px; border-radius:12px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold), #F3CE84);
+    color:#1A1400; box-shadow:0 10px 30px -12px rgba(231,178,78,0.55);
+  }
+  .btn-outline{
+    border:1px solid var(--surface-line); color:var(--text);
+  }
+  .btn-outline:hover{ border-color:var(--teal); color:var(--teal); }
 
-    .container { max-width: 900px; margin: -60px auto 60px; padding: 0 20px; }
+  /* ---------- PHILOSOPHY ---------- */
+  .section{ max-width:1080px; margin:0 auto; padding:70px 24px; }
+  .section-head{ max-width:560px; margin:0 auto 44px; text-align:center; }
+  .section-head h2{ font-size:clamp(24px,3.4vw,32px); margin-top:12px; }
+  .section-head p{ color:var(--text-muted); margin-top:12px; font-size:15.5px; }
 
-    /* --- CERTIFICATE CARD --- */
-    .cert-card {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 50px;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
-      border-top: 10px solid var(--secondary);
-      display: none; /* JS */
-      position: relative;
-    }
+  .pillars{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  .pillar{
+    background:var(--surface); border:1px solid var(--surface-line);
+    border-radius:var(--radius); padding:26px 20px;
+  }
+  .pillar-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--teal-soft);
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+    color:var(--teal); font-size:17px;
+  }
+  .pillar h3{ font-size:16px; margin-bottom:8px; }
+  .pillar p{ font-size:13.8px; color:var(--text-muted); }
 
-    .header-cert { text-align: center; margin-bottom: 30px; }
-    .scratch-logo { max-width: 140px; margin-bottom: 10px; }
-    
-    .student-info { text-align: center; margin-bottom: 40px; }
-    .student-info .label { text-transform: uppercase; letter-spacing: 3px; color: var(--muted); font-size: 0.8rem; font-weight: 700; }
-    .student-info h2 { font-size: clamp(1.8rem, 5vw, 3rem); margin: 10px 0; font-family: 'Space Grotesk', sans-serif; color: var(--dark); }
+  /* ---------- PROGRAMME (signature timeline) ---------- */
+  .programme-wrap{ position:relative; }
+  .timeline{
+    position:relative; padding-left:34px; margin-top:8px;
+  }
+  .timeline::before{
+    content:''; position:absolute; left:11px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(180deg, var(--gold), var(--teal));
+    opacity:0.4;
+  }
+  .step{ position:relative; padding:0 0 30px 24px; }
+  .step:last-child{ padding-bottom:0; }
+  .step::before{
+    content:attr(data-n);
+    position:absolute; left:-34px; top:-2px;
+    width:24px; height:24px; border-radius:50%;
+    background:var(--bg-soft); border:1px solid var(--gold);
+    color:var(--gold); font-family:var(--mono); font-size:11px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step h3{ font-size:15.5px; margin-bottom:4px; }
+  .step p{ font-size:13.8px; color:var(--text-muted); }
 
-    /* --- PEDAGOGY BOX (MARKETING ARGUMENT) --- */
-    .pedagogy-badge {
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 35px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .pedagogy-badge span { font-size: 2rem; }
-    .pedagogy-badge p { margin: 0; font-size: 0.95rem; color: #1e40af; font-weight: 500; }
-    .pedagogy-badge p b { color: var(--primary); }
+  /* ---------- CERTIFICATE ---------- */
+  .cert-panel{
+    background:var(--surface); border:1px solid var(--surface-line);
+    border-radius:24px; padding:48px 36px; text-align:center; position:relative; overflow:hidden;
+  }
+  .cert-panel::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 50% -10%, rgba(231,178,78,0.16), transparent 60%);
+    pointer-events:none;
+  }
+  .seal{
+    width:74px; height:74px; margin:0 auto 22px; border-radius:50%;
+    background:linear-gradient(135deg, var(--gold), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .seal svg{ width:34px; height:34px; }
+  #cert-name{ color:var(--gold); }
+  .cert-panel h2{ font-size:clamp(22px,3vw,28px); margin:6px 0 14px; }
+  .cert-panel p.desc{ color:var(--text-muted); font-size:15px; max-width:480px; margin:0 auto 18px; }
+  .meta-row{
+    display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:22px;
+    font-family:var(--mono); font-size:12.5px; color:var(--text-muted);
+  }
+  .meta-row strong{ color:var(--text); display:block; font-family:var(--body); font-size:14px; margin-bottom:2px;}
 
-    /* --- CURRICULUM --- */
-    .details-section h3 { 
-      font-family: 'Space Grotesk', sans-serif; 
-      color: var(--dark);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 10px;
-    }
+  .invite-panel{ }
+  .invite-panel p.desc{ margin-bottom:26px; }
 
-    .program-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-    .program-item {
-      font-size: 0.9rem;
-      padding: 10px;
-      background: #f8fafc;
-      border-radius: 8px;
-      border-left: 3px solid var(--primary);
-    }
-    .program-item strong { color: var(--dark); }
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{
+    text-align:center; padding:70px 24px 40px;
+  }
+  .contact h2{ font-size:clamp(24px,3.4vw,32px); margin-bottom:14px; }
+  .contact p{ color:var(--text-muted); max-width:460px; margin:0 auto 30px; }
+  footer{
+    border-top:1px solid var(--surface-line); padding:26px 24px;
+    display:flex; justify-content:center; gap:18px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:12px; color:var(--text-muted);
+  }
+  footer a{ text-decoration:none; color:var(--text-muted); }
+  footer a:hover{ color:var(--teal); }
 
-    /* --- SIGNATURE --- */
-    .footer-cert {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-top: 40px;
-      margin-top: 40px;
-      border-top: 1px solid #e2e8f0;
-    }
-    .sig-block .name { display: block; font-weight: 700; font-size: 1.2rem; font-family: 'Space Grotesk'; }
-    .year-tag { background: var(--dark); color: white; padding: 6px 20px; border-radius: 100px; font-family: 'JetBrains Mono'; font-size: 0.85rem; }
+  @media (max-width:760px){
+    .pillars{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:520px){
+    .pillars{ grid-template-columns:1fr; }
+    .cert-panel{ padding:36px 20px; }
+    .meta-row{ gap:18px; }
+  }
 
-    /* --- ACTIONS --- */
-    .actions { text-align: center; margin-top: 40px; }
-    .btn {
-      text-decoration: none;
-      padding: 16px 35px;
-      border-radius: 12px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-      border: none;
-      font-size: 1rem;
-    }
-    .btn-print { background: var(--primary); color: white; box-shadow: 0 10px 15px -3px rgba(77,151,255,0.4); }
-    .btn-signup { background: var(--secondary); color: white; box-shadow: 0 10px 15px -3px rgba(255,171,25,0.4); }
-    .btn:hover { transform: translateY(-3px); }
-
-    /* --- PRINT --- */
-    @media print {
-      nav, .hero, .actions, footer { display: none !important; }
-      .container { margin-top: 0; }
-      .cert-card { box-shadow: none; border: 2px solid #eee; }
-    }
-    @media (max-width: 700px) {
-      .program-grid { grid-template-columns: 1fr; }
-      .footer-cert { flex-direction: column; align-items: center; gap: 30px; text-align: center; }
-    }
-  </style>
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .btn:hover{ transform:none; }
+  }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="#" class="brand">Grami <span>Salma</span></a>
-    <div style="font-size: 0.8rem; opacity: 0.7; font-weight: 600;">PORTFOLIO PÉDAGOGIQUE</div>
-  </nav>
-
-  <header class="hero">
-    <div class="container">
-      <h1>Attestation de Réussite</h1>
-      <p>Célébrer l'effort, la logique et la créativité numérique.</p>
+<nav>
+  <div class="brand">
+    <div class="brand-mark">GS</div>
+    <div>
+      <div class="brand-name">Grami Salma</div>
+      <div class="brand-role">Ingénieur en Informatique</div>
     </div>
-  </header>
+  </div>
+  <a class="cta-link" href="#contact">Me contacter</a>
+</nav>
 
-  <main class="container">
-    
-    <!-- Erreur -->
-    <div id="error-message" style="display:none; text-align:center; background:white; padding:40px; border-radius:20px;">
-      <h2 style="color:#be123c">Accès restreint</h2>
-      <p>Veuillez utiliser le lien personnel fourni par votre instructrice.</p>
+<section class="hero">
+  <img src="download.jpg" alt="Logo Scratch" class="scratch-image">
+  <span class="eyebrow">Cours particuliers · Scratch & Python · 10–16 ans</span>
+  <h1>On code, on se trompe,<br>on <span>comprend</span>, on recommence.</h1>
+  <p class="lead">
+    J'accompagne votre enfant pas à pas : des cours construits autour d'applications
+    concrètes, où l'on développe au fur et à mesure son esprit analytique et
+    sa capacité à résoudre des problèmes par lui-même.
+  </p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#programme">Voir le programme</a>
+    <a class="btn btn-outline" href="#contact">Réserver un cours</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <span class="eyebrow">Approche pédagogique</span>
+    <h2>Apprendre en construisant, pas en récitant</h2>
+    <p>Chaque notion est introduite par un mini-projet, pas par une définition.</p>
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">◆</div>
+      <h3>Accompagnement individuel</h3>
+      <p>Un rythme et des exemples adaptés à l'âge et au niveau de l'enfant, jamais un cours générique.</p>
     </div>
+    <div class="pillar">
+      <div class="pillar-icon">▲</div>
+      <h3>Applications concrètes</h3>
+      <p>Jeux, animations, histoires interactives : chaque bloc appris sert tout de suite à créer quelque chose.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">●</div>
+      <h3>Esprit analytique</h3>
+      <p>On apprend à décomposer un problème avant de coder — la compétence qui reste au-delà de Scratch.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">■</div>
+      <h3>Progression pas à pas</h3>
+      <p>Chaque séance s'appuie sur la précédente, jusqu'à un projet libre entièrement autonome.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Certificat -->
-    <div id="certificate-content" class="cert-card">
-      
-      <div class="header-cert">
-        <img src="download.jpg" alt="Logo Scratch" class="scratch-logo">
-      </div>
+<section class="section programme-wrap" id="programme">
+  <div class="section-head">
+    <span class="eyebrow">Programme</span>
+    <h2>Le parcours, module après module</h2>
+    <p>10 étapes, du premier clic sur l'interface au projet libre.</p>
+  </div>
+  <div class="timeline">
+    <div class="step" data-n="1"><h3>Introduction à Scratch</h3><p>Découverte de l'interface, premier personnage animé à l'écran.</p></div>
+    <div class="step" data-n="2"><h3>Personnalisation</h3><p>Interface de dessin, création de personnages et décors sur-mesure.</p></div>
+    <div class="step" data-n="3"><h3>Événements & mouvement</h3><p>Déclencher une action, faire bouger un personnage avec précision.</p></div>
+    <div class="step" data-n="4"><h3>Blocs d'apparence</h3><p>Costumes, effets visuels, mise en scène des personnages.</p></div>
+    <div class="step" data-n="5"><h3>Blocs de contrôle</h3><p>Boucles et conditions pour piloter le comportement du jeu.</p></div>
+    <div class="step" data-n="6"><h3>Capteurs</h3><p>Détection du clavier, de la souris, des collisions, dans des mini-projets.</p></div>
+    <div class="step" data-n="7"><h3>Opérateurs</h3><p>Manipuler des valeurs, construire des expressions logiques.</p></div>
+    <div class="step" data-n="8"><h3>Sons & variables</h3><p>Ajout de sons, introduction aux variables pour mémoriser une information.</p></div>
+    <div class="step" data-n="9"><h3>Consolidation</h3><p>Un projet personnel qui rassemble tous les blocs étudiés.</p></div>
+    <div class="step" data-n="10"><h3>Extensions Scratch</h3><p>Vidéo, traduction, capteurs avancés : aller plus loin que le cours de base.</p></div>
+  </div>
+</section>
 
-      <div class="student-info">
-        <span class="label">Ce certificat est fièrement décerné à</span>
-        <h2 id="student-name">Élève en formation</h2>
-      </div>
+<section class="section">
+  <div id="cert-area"></div>
+</section>
 
-      <!-- ARGUMENTS PÉDAGOGIQUES -->
-      <div class="pedagogy-badge">
-        <span>💡</span>
-        <p>
-          L'élève a bénéficié d'un <b>accompagnement personnalisé</b> adapté à son propre rythme. 
-          Ma méthode repose sur un principe fondamental : <b>comprendre la logique algorithmique avant d'appliquer le code</b>, garantissant une maîtrise durable.
-        </p>
-      </div>
+<section class="contact" id="contact">
+  <span class="eyebrow">Contact</span>
+  <h2>Envie d'un cours pour votre enfant ?</h2>
+  <p>Réponse rapide par e-mail, premier échange gratuit pour définir le bon rythme.</p>
+  <a class="btn btn-primary" href="mailto:gramisalma0@gmail.com">Écrire à gramisalma0@gmail.com</a>
+</section>
 
-      <div class="details-section">
-        <h3>Programme technique validé</h3>
-        <div class="program-grid">
-          <div class="program-item"><strong>1. Introduction</strong> : Interface et premier script de mouvement.</div>
-          <div class="program-item"><strong>2. Design</strong> : Création graphique de sprites et d'arrière-plans.</div>
-          <div class="program-item"><strong>3. Événements</strong> : Déclencheurs et logique de mouvement.</div>
-          <div class="program-item"><strong>4. Apparence</strong> : Costumes, effets et narration visuelle.</div>
-          <div class="program-item"><strong>5. Contrôle</strong> : Maîtrise des boucles et conditions (Si/Alors).</div>
-          <div class="program-item"><strong>6. Capteurs</strong> : Interactivité et détection d'environnement.</div>
-          <div class="program-item"><strong>7. Opérateurs</strong> : Calculs logiques et mathématiques.</div>
-          <div class="program-item"><strong>8. Données</strong> : Utilisation des variables et intégration sonore.</div>
-          <div class="program-item"><strong>9. Autonomie</strong> : Développement d'un projet libre de A à Z.</div>
-          <div class="program-item"><strong>10. Extensions</strong> : Vidéo, traduction et outils avancés.</div>
+<footer>
+  <span>© <span id="year"></span> Grami Salma — Tous droits réservés</span>
+  <a href="https://github.com/gramisalma" target="_blank">GitHub</a>
+  <a href="mailto:gramisalma0@gmail.com">gramisalma0@gmail.com</a>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Liste des étudiants autorisés
+  const authorizedStudents = [
+    // 2024-2025
+    { id: "djhfnjd",  firstName: "Nassim",   lastName: "El Malki",       year: "2024-2025" },
+    { id: "xdvfbvcnb",firstName: "Yue Fei",  lastName: "St-Amand",       year: "2024-2025" },
+    { id: "xcbvghx",  firstName: "Erwan",    lastName: "Fosset-Greze",   year: "2024-2025" },
+    { id: "xdvbnb",   firstName: "Luka",     lastName: "Fixmer",         year: "2024-2025" },
+    { id: "erdcvgr",  firstName: "Samuel",   lastName: "Mazure",         year: "2024-2025" },
+    { id: "cdvfrdf",  firstName: "Abel",     lastName: "Descamps",       year: "2024-2025" },
+    { id: "cxvddsf",  firstName: "Gabriel",  lastName: "Kleiber",        year: "2024-2025" },
+    { id: "zscdvfsd", firstName: "Loïs",     lastName: "Marichy",        year: "2024-2025" },
+    { id: "asxdsswsf",firstName: "Lysandre", lastName: "Marichy",        year: "2024-2025" },
+    // 2025-2026
+    { id: "XNBCVSDKVJC", firstName: "Harone",  lastName: "Mandili",  year: "2025-2026" },
+    { id: "DCSDCGVD",    firstName: "Lina",    lastName: "Argoubi",  year: "2025-2026" },
+    { id: "DZCFCQSC",    firstName: "Camilia", lastName: "Mandili",  year: "2025-2026" },
+  ];
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const studentId = urlParams.get('id');
+  const student = authorizedStudents.find(s => s.id === studentId);
+
+  const certArea = document.getElementById('cert-area');
+
+  const sealSVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2l2.4 5.1L20 8l-4 3.9L17 18l-5-2.9L7 18l1-6.1L4 8l5.6-.9L12 2z" fill="#0F0D26"/>
+  </svg>`;
+
+  if (student) {
+    certArea.innerHTML = `
+      <div class="cert-panel">
+        <img src="download.jpg" alt="Logo Scratch" class="scratch-image">
+        <div class="seal">${sealSVG}</div>
+        <span class="eyebrow">Certificat de réussite</span>
+        <h2>Félicitations, <span id="cert-name">${student.firstName} ${student.lastName}</span> !</h2>
+        <p class="desc">Le cours de Scratch a été suivi avec succès, du premier personnage animé jusqu'au projet libre.</p>
+        <div class="meta-row">
+          <div><strong>${student.year}</strong>Année académique</div>
+          <div><strong>Grami Salma</strong>Encadrant du cours</div>
+          <div><strong>10 modules</strong>Programme complet</div>
         </div>
       </div>
-
-      <div class="footer-cert">
-        <div class="sig-block">
-          <span class="label" style="margin-bottom: 5px;">Instructrice Référente</span>
-          <span class="name">Salma Grami</span>
-          <span style="color: var(--muted); font-size: 0.85rem;">Ingénieur en Informatique</span>
-        </div>
-        <div style="text-align: right;">
-          <span class="label" style="margin-bottom: 5px;">Session Académique</span>
-          <div class="year-tag" id="academic-year">2024-2025</div>
-        </div>
+    `;
+  } else {
+    certArea.innerHTML = `
+      <div class="cert-panel invite-panel">
+        <div class="seal">${sealSVG}</div>
+        <span class="eyebrow">Certificat de réussite</span>
+        <h2>Ce certificat est personnel</h2>
+        <p class="desc">Contactez-moi pour inscrire votre enfant au prochain groupe.</p>
+        <a class="btn btn-primary" href="#contact">Inscrire mon enfant</a>
       </div>
-    </div>
+    `;
+  }
+</script>
 
-    <!-- Zone d'actions -->
-    <div class="actions" id="action-area"></div>
-
-  </main>
-
-  <footer style="text-align: center; color: var(--muted); padding-bottom: 40px; font-size: 0.9rem;">
-    <p>© <span id="current-year"></span> Salma Grami — Coaching Informatique & Programmation</p>
-    <a href="mailto:gramisalma0@gmail.com" style="color: var(--primary); text-decoration:none;">gramisalma0@gmail.com</a>
-  </footer>
-
-  <script>
-    const authorizedStudents = [
-      { id: "djhfnjd", firstName: "Nassim", lastName: "El Malki", year: "2024-2025" },
-      { id: "xdvfbvcnb", firstName: "Yue Fei", lastName: "St-Amand", year: "2024-2025" },
-      { id: "xcbvghx", firstName: "Erwan", lastName: "Fosset-Greze", year: "2024-2025" },
-      { id: "xdvbnb", firstName: "Luka", lastName: "Fixmer", year: "2024-2025" },
-      { id: "erdcvgr", firstName: "Samuel", lastName: "Mazure", year: "2024-2025"},
-      { id: "cdvfrdf", firstName: "Abel", lastName: "Descamps", year: "2024-2025" },
-      { id: "cxvddsf", firstName: "Gabriel", lastName: "Kleiber", year: "2024-2025" },
-      { id: "zscdvfsd", firstName: "Loïs", lastName: "MARICHY", year: "2024-2025" },
-      { id: "asxdsswsf", firstName: "Lysandre", lastName: "MARICHY", year: "2024-2025" },
-      { id: "XNBCVSDKVJC", firstName: "Harone", lastName: "MANDILI", year: "2025-2026" },
-      { id: "DCSDCGVD", firstName: "Lina", lastName: "ARGOUBI", year: "2025-2026" },
-      { id: "DZCFCQSC", firstName: "Camilia", lastName: "MANDILI", year: "2025-2026" }, 
-    ];
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const studentId = urlParams.get('id');
-    const certCard = document.getElementById('certificate-content');
-    const actionArea = document.getElementById('action-area');
-    const nameDisplay = document.getElementById('student-name');
-    const yearDisplay = document.getElementById('academic-year');
-
-    if (studentId === null) {
-      // MODE MARKETING (Sans ID)
-      nameDisplay.textContent = "Futur Expert Scratch";
-      nameDisplay.style.opacity = "0.3";
-      certCard.style.display = 'block';
-      actionArea.innerHTML = `
-        <a href="mailto:gramisalma0@gmail.com" class="btn btn-signup">🚀 S'inscrire & Obtenir mon Certificat</a>
-        <p style="margin-top:15px; font-size:0.8rem; color:var(--muted);">Découvrez comment j'accompagne mes élèves vers la réussite.</p>
-      `;
-    } else {
-      const student = authorizedStudents.find(s => s.id === studentId);
-      if (student) {
-        // MODE ELEVE VALIDE
-        nameDisplay.textContent = `${student.firstName} ${student.lastName}`;
-        yearDisplay.textContent = student.year;
-        certCard.style.display = 'block';
-        actionArea.innerHTML = `
-          <button onclick="window.print()" class="btn btn-print">🖨️ Imprimer mon Certificat Officiel</button>
-        `;
-      } else {
-        // MAUVAIS ID
-        document.getElementById('error-message').style.display = 'block';
-      }
-    }
-
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
