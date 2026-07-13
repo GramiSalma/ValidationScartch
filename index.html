@@ -84,6 +84,10 @@
     font-size:18px; color:var(--text-muted); max-width:600px; margin:0 auto 32px;
   }
   .hero-actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  #hero-greeting{
+    font-family:var(--display); font-weight:600; font-size:19px;
+    color:var(--gold); margin:14px 0 0;
+  }
   .scratch-image{
     display:block; margin:0 auto 22px; max-width:96px; height:auto;
     border-radius:16px; padding:10px; background:var(--surface);
@@ -222,6 +226,7 @@
 <section class="hero">
   <img src="download.jpg" alt="Logo Scratch" class="scratch-image">
   <span class="eyebrow">Cours particuliers · Scratch & Python · 10–16 ans</span>
+  <div id="hero-greeting"></div>
   <h1>On code, on se trompe,<br>on <span>comprend</span>, on recommence.</h1>
   <p class="lead">
     J'accompagne votre enfant pas à pas : des cours construits autour d'applications
@@ -327,6 +332,11 @@
   const student = authorizedStudents.find(s => s.id === studentId);
 
   const certArea = document.getElementById('cert-area');
+  const heroGreeting = document.getElementById('hero-greeting');
+
+  if (student) {
+    heroGreeting.textContent = `Félicitations, ${student.firstName} ${student.lastName} !`;
+  }
 
   const sealSVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 2l2.4 5.1L20 8l-4 3.9L17 18l-5-2.9L7 18l1-6.1L4 8l5.6-.9L12 2z" fill="#0F0D26"/>
@@ -338,7 +348,7 @@
         <img src="download.jpg" alt="Logo Scratch" class="scratch-image">
         <div class="seal">${sealSVG}</div>
         <span class="eyebrow">Certificat de réussite</span>
-        <h2>Félicitations, <span id="cert-name">${student.firstName} ${student.lastName}</span> !</h2>
+        <h2>Votre certificat</h2>
         <p class="desc">Le cours de Scratch a été suivi avec succès, du premier personnage animé jusqu'au projet libre.</p>
         <div class="meta-row">
           <div><strong>${student.year}</strong>Année académique</div>
@@ -351,8 +361,6 @@
     certArea.innerHTML = `
       <div class="cert-panel invite-panel">
         <div class="seal">${sealSVG}</div>
-        <span class="eyebrow">Certificat de réussite</span>
-        <h2>Ce certificat est personnel</h2>
         <p class="desc">Contactez-moi pour inscrire votre enfant au prochain groupe.</p>
         <a class="btn btn-primary" href="#contact">Inscrire mon enfant</a>
       </div>
